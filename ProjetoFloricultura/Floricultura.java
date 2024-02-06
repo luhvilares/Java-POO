@@ -68,13 +68,13 @@ public class Floricultura {
 		return Integer.parseInt(entrada);
 	}
 
-	public void salvaFlores (ArrayList<Flor> mamiferos){
+	public void salvaFlores (ArrayList<Flor> flor){
 		ObjectOutputStream outputStream = null;
 		try {
 			outputStream = new ObjectOutputStream 
 					(new FileOutputStream("c:\\temp\\floricultura.dados"));
 			for (int i=0; i < flores.size(); i++)
-				outputStream.writeObject(mamiferos.get(i));
+				outputStream.writeObject(flor.get(i));
 		} catch (FileNotFoundException ex) {
 			JOptionPane.showMessageDialog(null,"Impossível criar arquivo!");
 		} catch (IOException ex) {
@@ -90,7 +90,7 @@ public class Floricultura {
 	}
 
 	@SuppressWarnings("finally")
-	public ArrayList<Flor> recuperaMamiferos (){
+	public ArrayList<Flor> recuperaFlor (){
 		ArrayList<Flor> floresTemp = new ArrayList<>();
 
 		ObjectInputStream inputStream = null;
@@ -184,7 +184,7 @@ public class Floricultura {
 				JOptionPane.showMessageDialog(null,"Dados SALVOS com sucesso!");
 				break;
 			case 5: // Recupera Dados
-				flores = recuperaMamiferos();
+				flores = recuperaFlor();
 				if (flores.isEmpty()) {
 					JOptionPane.showMessageDialog(null,"Sem dados para apresentar.");
 					break;
